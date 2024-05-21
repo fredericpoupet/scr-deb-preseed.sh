@@ -70,7 +70,7 @@ gsettings set org.cinnamon.desktop.interface gtk-theme "Adwaita-dark"
 gsettings set org.cinnamon.desktop.wm.preferences theme "Adwaita-dark"
 gsettings set org.cinnamon.desktop.interface icon-theme "Adwaita"
 gsettings set org.gnome.gedit.preferences.editor scheme "oblivion"
-gnome-terminal --full-screen &
+gnome-terminal --maximize &
 EOF'
 
 chmod +x /root/.xsessionrc
@@ -83,7 +83,7 @@ gsettings set org.cinnamon.desktop.interface gtk-theme "Adwaita-dark"
 gsettings set org.cinnamon.desktop.wm.preferences theme "Adwaita-dark"
 gsettings set org.cinnamon.desktop.interface icon-theme "Adwaita"
 gsettings set org.gnome.gedit.preferences.editor scheme "oblivion"
-gnome-terminal --full-screen &
+gnome-terminal --maximize &
 EOF'
 
 chmod +x /etc/skel/.xsessionrc
@@ -158,27 +158,6 @@ configure_sudo() {
     echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/90-$USERNAME-nopasswd"
 }
 
-# Download and install Visual Studio Code
-
-VSCODE_DEB="/tmp/vscode.deb"
-wget -O "$VSCODE_DEB" "https://go.microsoft.com/fwlink/?LinkID=760868"
-apt install -y "$VSCODE_DEB"
-rm "$VSCODE_DEB"
-
-pin_vscode_to_panel() {
-    local USER_HOME=$1
-
-    mkdir -p "$USER_HOME/.cinnamon/configs/panel-launchers@cinnamon.org"
-    bash -c 'cat << EOF > "$USER_HOME/.cinnamon/configs/panel-launchers@cinnamon.org/panel-launchers.json"
-{
-    "app": [
-        "code.desktop"
-    ]
-}
-EOF'
-    chown -R $user:$user "$USER_HOME/.cinnamon"
-}
-
 # Get the list of users with home directories in /home
 
 users=$(ls /home)
@@ -197,14 +176,12 @@ for user in $users; do
         download_and_setup_script "$user" "$user_home"
         download_and_setup_preseed "$user" "$user_home"
         configure_sudo "$user"
-        pin_vscode_to_panel "$user_home"
     fi
 done
 
 # Setup for root
 
 download_and_setup_script_root
-pin_vscode_to_panel "/root"
 download_and_setup_preseed_root
 
 # End of file
