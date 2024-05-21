@@ -21,6 +21,44 @@ The following files are required to run the script:
 - SHA256SUMS
 - SHA256SUMS.sign
 
+## Customization
+
+### Software
+
+The following software packages are installed:
+
+- code
+- curl
+- htop
+- lnav
+- sudo
+- wget
+
+### Aliases
+
+The following aliases are created for root and listed users:
+
+- alias c="clear"
+- alias ll="ls -lisah"
+- alias p="sudo poweroff"
+- alias r="sudo reboot"
+- alias v="sudo vim.tiny"
+
+### Dark theme
+
+The "Adwaita-dark" dark theme is applied to the root session and to those of the listed users.
+
+### Scripts
+
+The following scripts are downloaded and made executable for root and listed users:
+
+- https://raw.githubusercontent.com/fredericpoupet/scr-apt-up.sh/main/scr-apt-up.sh
+- https://raw.githubusercontent.com/fredericpoupet/scr-deb-preseed.sh/main
+
+### Sudoers
+
+Listed users are added to sudoers
+
 ## Example of result
 
 ```
