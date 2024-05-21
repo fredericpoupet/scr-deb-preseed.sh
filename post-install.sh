@@ -10,7 +10,7 @@ rm -f packages.microsoft.gpg
 # Update packages and install additional software
 
 apt-get update
-apt-get install -y code curlhtop lnav sudo wget
+apt-get install -y code curl htop lnav sudo wget
 
 # Create a centralized alias file for root
 
@@ -100,7 +100,7 @@ add_aliases_to_bashrc() {
 
 # Functions to download and setup the scr-apt-up.sh script
 
-download_and_setup_script_root() {
+download_and_setup_apt_up_root() {
     local SCRIPT_URL="https://raw.githubusercontent.com/fredericpoupet/scr-apt-up.sh/main/scr-apt-up.sh"
     local SCRIPT_NAME="scr-apt-up.sh"
     local ROOT_HOME="/root"
@@ -109,7 +109,7 @@ download_and_setup_script_root() {
     chmod +x "$ROOT_HOME/$SCRIPT_NAME"
 }
 
-download_and_setup_script() {
+download_and_setup_apt_up() {
     local USERNAME=$1
     local USER_HOME=$2
     local SCRIPT_URL="https://raw.githubusercontent.com/fredericpoupet/scr-apt-up.sh/main/scr-apt-up.sh"
@@ -132,6 +132,7 @@ download_and_setup_preseed_root() {
     wget -O "$PRESEED_DIR/scr-deb-preseed.sh" "$BASE_URL/scr-deb-preseed.sh"
 
     chmod +x "$PRESEED_DIR/scr-deb-preseed.sh"
+}
 
 download_and_setup_preseed() {
     local USERNAME=$1
@@ -173,7 +174,7 @@ for user in $users; do
         cp /etc/skel/.aliases "$user_home/.aliases"
         chown $user:$user "$user_home/.aliases"
         add_aliases_to_bashrc "$user_home"
-        download_and_setup_script "$user" "$user_home"
+        download_and_setup_apt_up "$user" "$user_home"
         download_and_setup_preseed "$user" "$user_home"
         configure_sudo "$user"
     fi
@@ -181,7 +182,7 @@ done
 
 # Setup for root
 
-download_and_setup_script_root
+download_and_setup_apt_up_root
 download_and_setup_preseed_root
 
 # End of file
