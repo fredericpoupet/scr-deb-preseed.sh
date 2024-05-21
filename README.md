@@ -14,6 +14,8 @@ The following software is required to run the script:
 - libarchive-tools
 - xorriso
 
+Their presence is checked and, if necessary, they are installed by the script.
+
 ### Files
 
 The following files are required to run the script:
