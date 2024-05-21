@@ -18,6 +18,7 @@ The following software is required to run the script:
 
 The following files are required to run the script:
 
+- Debian ISO image
 - preseed.cfg
 - post-install.sh
 - SHA256SUMS
