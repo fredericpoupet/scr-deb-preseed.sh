@@ -47,9 +47,11 @@ The following aliases are created for root and listed users:
 - alias r="sudo reboot"
 - alias v="sudo vim.tiny"
 
-### Dark theme
+### Graphic environment
 
-The "Adwaita-dark" dark theme is applied to the root session and to those of the listed users.
+The "Adwaita-dark" dark theme is applied to the root session and those of listed users.
+
+A maximized terminal window is automatically executed on login.
 
 ### Scripts
 
