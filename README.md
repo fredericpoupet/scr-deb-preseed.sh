@@ -1,5 +1,17 @@
 # scr-deb-preseed.sh
 
+## Prerequisites
+
+### Software
+
+The following software is required to run the script:
+
+- debconf-utils
+- isolinux
+- gpg
+- libarchive-tools
+- xorriso
+
 ## Example of result
 
 ```
