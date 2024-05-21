@@ -12,6 +12,15 @@ The following software is required to run the script:
 - libarchive-tools
 - xorriso
 
+### Files
+
+The following files are required to run the script:
+
+- preseed.cfg
+- post-install.sh
+- SHA256SUMS
+- SHA256SUMS.sign
+
 ## Example of result
 
 ```
