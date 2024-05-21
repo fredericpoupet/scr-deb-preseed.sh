@@ -1,6 +1,8 @@
 # scr-deb-preseed.sh
 
-This script, added to the preseed.cfg, post-install.sh, SHA256SUMS, SHA256SUMS.sign files and a Debian ISO image, generates a customized ISO UEFI image that installs without any user intervention. 
+This script, added to the preseed.cfg, post-install.sh, SHA256SUMS, SHA256SUMS.sign files and a Debian ISO image, generates a customized ISO UEFI image that installs without any user intervention.
+
+![diagram](https://github.com/fredericpoupet/scr-deb-preseed.sh/assets/126384795/bf31e9df-14ba-4c0c-a480-84ab17117cc8)
 
 ## Prerequisites
 
