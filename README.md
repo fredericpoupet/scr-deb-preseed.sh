@@ -6,6 +6,8 @@ This script, added to the preseed.cfg, post-install.sh, SHA256SUMS, SHA256SUMS.s
 
 ![diagram](https://github.com/fredericpoupet/scr-deb-preseed.sh/assets/126384795/c85f6369-d35e-4371-8a44-1d24c9dd5e43)
 
+![diagram](https://github.com/fredericpoupet/scr-deb-preseed.sh/assets/126384795/792defce-4eeb-4b26-ad4a-7dea887cc4fe)
+
 ## Prerequisites
 
 ### Software
