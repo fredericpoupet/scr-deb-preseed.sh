@@ -28,6 +28,8 @@ The following files are required to run the script:
 
 ## Customization
 
+The post-install.sh script will make the following modifications.
+
 ### Software
 
 The following software packages are installed:
