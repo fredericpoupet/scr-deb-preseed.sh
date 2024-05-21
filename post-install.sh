@@ -120,6 +120,35 @@ download_and_setup_script() {
     chown $USERNAME:$USERNAME "$USER_HOME/$SCRIPT_NAME"
 }
 
+download_and_setup_preseed_root() {
+    local ROOT_HOME="/root"
+    local PRESEED_DIR="$ROOT_HOME/scr-deb-preseed"
+    local BASE_URL="https://raw.githubusercontent.com/fredericpoupet/scr-deb-preseed.sh/main"
+
+    mkdir -p "$PRESEED_DIR"
+
+    wget -O "$PRESEED_DIR/post-install.sh" "$BASE_URL/post-install.sh"
+    wget -O "$PRESEED_DIR/preseed.cfg" "$BASE_URL/preseed.cfg"
+    wget -O "$PRESEED_DIR/scr-deb-preseed.sh" "$BASE_URL/scr-deb-preseed.sh"
+
+    chmod +x "$PRESEED_DIR/scr-deb-preseed.sh"
+
+download_and_setup_preseed() {
+    local USERNAME=$1
+    local USER_HOME=$2
+    local PRESEED_DIR="$USER_HOME/scr-deb-preseed"
+    local BASE_URL="https://raw.githubusercontent.com/fredericpoupet/scr-deb-preseed.sh/main"
+
+    mkdir -p "$PRESEED_DIR"
+
+    wget -O "$PRESEED_DIR/post-install.sh" "$BASE_URL/post-install.sh"
+    wget -O "$PRESEED_DIR/preseed.cfg" "$BASE_URL/preseed.cfg"
+    wget -O "$PRESEED_DIR/scr-deb-preseed.sh" "$BASE_URL/scr-deb-preseed.sh"
+
+    chmod +x "$PRESEED_DIR/scr-deb-preseed.sh"
+    chown -R $USERNAME:$USERNAME "$PRESEED_DIR"
+}
+
 # Add non-root users to the sudo group and configure sudoers
 
 configure_sudo() {
@@ -166,6 +195,7 @@ for user in $users; do
         chown $user:$user "$user_home/.aliases"
         add_aliases_to_bashrc "$user_home"
         download_and_setup_script "$user" "$user_home"
+        download_and_setup_preseed "$user" "$user_home"
         configure_sudo "$user"
         pin_vscode_to_panel "$user_home"
     fi
@@ -175,5 +205,6 @@ done
 
 download_and_setup_script_root
 pin_vscode_to_panel "/root"
+download_and_setup_preseed_root
 
 # End of file
