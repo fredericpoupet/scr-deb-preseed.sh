@@ -173,10 +173,6 @@ background_image /isolinux/splash.png || background_image /splash.png
 set color_normal=light-gray/black
 set color_highlight=white/black
 
-# Load and play a sound
-insmod play
-play 960 440 1 0 4 440 1
-
 # Set theme
 set theme=/boot/grub/theme/1
 
