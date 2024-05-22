@@ -2,15 +2,15 @@
 
 # Variables
 
-date="21/05/2024"
+date="22/05/2024"
 iso_file=""
 tmpdir=".work"
-version="v0.2"
+version="v0.3"
 
 grub_entry="DEB-12.5.0-NET-PRESEED-20240521-01"
 grub_timeout=3
 
-xorriso_v="Debian 12.5 amd64"
+xorriso_v="DEBIAN_12_5_AMD64"
 xorriso_o="debian-12.5-amd64-uefi-netinst-preseed.iso"
 
 clear
