@@ -10,7 +10,7 @@ version="v0.3"
 grub_entry="DEB-12.5.0-NET-PRESEED-20240522-01"
 grub_timeout=3
 
-xorriso_v="DEBIAN_12_5_AMD64"
+xorriso_v="DEBIAN_12_5_PRESEED"
 xorriso_o="debian-12.5-amd64-uefi-netinst-preseed.iso"
 
 clear
