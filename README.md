@@ -57,11 +57,11 @@ The following aliases are created for root and listed users:
 
 ### Graphic environment
 
-The "Adwaita-dark" dark theme is applied to the root session and those of listed users.
+The post-install.sh script will make the following modifications to the root session and those of listed users:
 
-The "Oblivion" color scheme is applied to GEdit for the root session and those of listed users.
-
-A maximized terminal window is automatically executed on login.
+- The "Adwaita-dark" dark theme is applied
+- The "Oblivion" color scheme is applied to GEdit
+- A maximized terminal window is automatically executed on login
 
 ### Scripts
 
