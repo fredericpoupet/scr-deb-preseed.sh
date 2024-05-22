@@ -7,7 +7,7 @@ iso_file=""
 tmpdir=".work"
 version="v0.3"
 
-grub_entry="DEB-12.5.0-NET-PRESEED-20240521-01"
+grub_entry="DEB-12.5.0-NET-PRESEED-20240522-01"
 grub_timeout=3
 
 xorriso_v="DEBIAN_12_5_AMD64"
