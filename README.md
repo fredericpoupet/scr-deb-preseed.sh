@@ -22,11 +22,13 @@ Their presence is checked and, if necessary, they are installed by the script.
 
 The following files are required to run the script:
 
-- Debian ISO image
 - preseed.cfg
 - post-install.sh
+- Debian ISO image
 - SHA256SUMS
 - SHA256SUMS.sign
+
+The last three files can be downloaded from the official Debian website: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd.
 
 ## Customization
 
@@ -36,12 +38,12 @@ The post-install.sh script will make the following modifications.
 
 The following software packages are installed:
 
-- code
-- curl
-- htop
-- lnav
-- sudo
-- wget
+- curl (https://curl.se)
+- htop (https://htop.dev)
+- lnav (https://lnav.org)
+- sudo (https://www.sudo.ws)
+- VS Code (https://code.visualstudio.com)
+- wget (https://www.gnu.org/software/wget)
 
 ### Aliases
 
@@ -68,7 +70,7 @@ The following scripts are downloaded and made executable for root and listed use
 
 ### Sudoers
 
-Listed users are added to sudoers
+Listed users are added to sudoers.
 
 ## Example of result
 
