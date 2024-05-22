@@ -11,8 +11,8 @@ This script, added to the preseed.cfg, post-install.sh, SHA256SUMS, SHA256SUMS.s
 The following software is required to run the script:
 
 - debconf-utils
-- isolinux
 - gpg
+- isolinux
 - libarchive-tools
 - xorriso
 
