@@ -30,6 +30,18 @@ The following files are required to run the script:
 
 The last three files can be downloaded from the official Debian website: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd.
 
+## Automated installation
+
+The main settings made during installation are as follows:
+
+- Hostname: "unassigned-hostname"
+- Language: US with FR keyboard
+- NTP: Enabled with Paris as time zone
+- Packages: Standard installation with Cinnamon
+- Partitioning : Atomic (everything in a single partition)
+- Root account: Enabled (Password: "root")
+- User account: "user" (Password: "user")
+
 ## Customization
 
 The post-install.sh script will make the following modifications.
