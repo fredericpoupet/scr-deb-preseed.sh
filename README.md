@@ -22,8 +22,8 @@ Their presence is checked and, if necessary, they are installed by the script.
 
 The following files are required to run the script:
 
-- preseed.cfg
-- post-install.sh
+- preseed.cfg (File containing all parameters automatically applied during installation)
+- post-install.sh (Script making the changes detailed below at the end of automatic installation)
 - Debian ISO image
 - SHA256SUMS
 - SHA256SUMS.sign
