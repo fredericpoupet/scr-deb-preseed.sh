@@ -8,3 +8,12 @@ d-i keyboard-configuration/xkb-keymap select us
 d-i keyboard-configuration/toggle select grp:alt_shift_toggle
 
 d-i pkgsel/exclude string libreoffice libreoffice-core libreoffice-common
+
+# Sélectionner les tâches à installer
+tasksel tasksel/first multiselect standard, cinnamon-desktop
+d-i pkgsel/include string cinnamon-core
+d-i pkgsel/upgrade select none
+popularity-contest popularity-contest/participate boolean false
+
+# Exclure les paquets superflus (ajustez cette liste selon vos besoins)
+d-i pkgsel/exclude string libreoffice* gimp* inkscape* thunderbird* 
