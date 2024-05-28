@@ -17,3 +17,12 @@ popularity-contest popularity-contest/participate boolean false
 
 # Exclure les paquets superflus (ajustez cette liste selon vos besoins)
 d-i pkgsel/exclude string libreoffice* gimp* inkscape* thunderbird* 
+
+# Sélectionner les tâches à installer
+tasksel tasksel/first multiselect standard, cinnamon-desktop
+d-i pkgsel/include string cinnamon-core
+d-i pkgsel/upgrade select none
+popularity-contest popularity-contest/participate boolean false
+
+# Exclure les paquets superflus
+d-i pkgsel/exclude string libreoffice* gimp* inkscape* thunderbird* transmission* vlc* rhythmbox* brasero* shotwell* cheese* evince* totem* gnome-games* scribus* bleachbit* calibre* audacity* filezilla* simple-scan* evolution*
