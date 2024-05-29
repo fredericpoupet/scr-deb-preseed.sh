@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Variables
+# VARIABLES
 
 date="29/05/2024"
 iso_file=""
 tmpdir=".work"
 version="v0.4"
 
-grub_entry="DEB-12.5.0-NET-PRESEED-20240522-01"
+grub_entry="DEB-12.5.0-NET-PRESEED-20240529-01"
 grub_timeout=3
 
 xorriso_v="DEBIAN_12_5_PRESEED"
@@ -23,17 +23,16 @@ echo -n "|___/\___|_|        \__,_|\___|_.__/      | .__/|_|  \___||___/\___|\__
 echo "                                          |_|                                             "
 echo ""
 
-
 echo "[CHECK FOR THE PRESENCE OF REQUIRED PACKAGES]"
 
-# Function to check if a package is installed
+# FUNCTION TO CHECK IF A PACKAGE IS INSTALLED
 
 is_installed() {
     dpkg -l "$1" &> /dev/null
     return $?
 }
 
-# List of required packages
+# LIST OF REQUIRED PACKAGES
 
 required_packages=(
     "debconf-utils"
@@ -43,7 +42,7 @@ required_packages=(
     "libarchive-tools"
 )
 
-# Loop through the list and check if each package is installed
+# LOOP THROUGH THE LIST AND CHECK IF EACH PACKAGE IS INSTALLED
 
 for package in "${required_packages[@]}"; do
     if is_installed "$package"; then
@@ -61,7 +60,7 @@ echo ''
 echo "[CHECK FOR THE PRESENCE OF REQUIRED FILES]"
 echo ''
 
-# List of required files
+# LIST OF REQUIRED FILES
 
 required_files=(
     "preseed.cfg"
@@ -70,7 +69,7 @@ required_files=(
     "SHA256SUMS.sign"
 )
 
-# Check for a file that starts with "debian" and ends with ".iso"
+# CHECK FOR A FILE THAT STARTS WITH "DEBIAN" AND ENDS WITH ".ISO"
 
 for file in debian*.iso; do
     if [ -e "$file" ]; then
@@ -79,7 +78,7 @@ for file in debian*.iso; do
     fi
 done
 
-# Function to check if a file exists
+# FUNCTION TO CHECK IF A FILE EXISTS
 
 file_missing=false
 for file in "${required_files[@]}"; do
@@ -89,7 +88,7 @@ for file in "${required_files[@]}"; do
     fi
 done
 
-# Check if ISO file is found
+# CHECK IF ISO FILE IS FOUND
 
 if [ -z "$iso_file" ]; then
     echo "No file starting with 'debian' and ending with '.iso' found."
@@ -98,7 +97,7 @@ else
     echo "ISO file found: $iso_file"
 fi
 
-# If any file is missing, display a summary and exit
+# IF ANY FILE IS MISSING, DISPLAY A SUMMARY AND EXIT
 
 if [ "$file_missing" = true ]; then
     echo "Some required files are missing. Please make sure the following files are present:"
@@ -116,7 +115,7 @@ echo ''
 echo "[CREATE THE DIRECTORY STRUCTURE]"
 echo ''
 
-# Create the directory structure, removing any existing content
+# CREATE THE DIRECTORY STRUCTURE, REMOVING ANY EXISTING CONTENT
 
 if [ -d "$tmpdir/isofiles" ]; then
     echo "Removing existing content in $tmpdir/isofiles"
@@ -149,15 +148,15 @@ sudo tee "$tmpdir/isofiles/boot/grub/grub.cfg" > /dev/null << EOF
 set default=0
 set timeout=$grub_timeout
 
-# Define font and load it directly
+# DEFINE FONT AND LOAD IT DIRECTLY
 font=unicode
 loadfont $font
 
-# Set graphics mode and payload
+# SET GRAPHICS MODE AND PAYLOAD
 set gfxmode=800x600
 set gfxpayload=keep
 
-# Load necessary modules
+# LOAD NECESSARY MODULES
 insmod efi_gop
 insmod efi_uga
 insmod video_bochs
@@ -165,18 +164,18 @@ insmod video_cirrus
 insmod gfxterm
 insmod png
 
-# Set terminal output to graphical terminal
+# SET TERMINAL OUTPUT TO GRAPHICAL TERMINAL
 terminal_output gfxterm
 
-# Load background image and set colors
+# LOAD BACKGROUND IMAGE AND SET COLORS
 background_image /isolinux/splash.png || background_image /splash.png
 set color_normal=light-gray/black
 set color_highlight=white/black
 
-# Set theme
+# SET THEME
 set theme=/boot/grub/theme/1
 
-# Menu entry
+# MENU ENTRY
 menuentry "$grub_entry" {
 #   linux    /install.amd/vmlinuz preseed/file=/cdrom/preseed.cfg locale=fr_FR.UTF-8 keymap=fr(latin9) language=fr country=FR autostrue --- quiet
     linux    /install.amd/vmlinuz preseed/file=/cdrom/preseed.cfg locale=en_US.UTF-8 keymap=us-intl language=en country=FR autostrue --- quiet
@@ -214,5 +213,4 @@ sudo xorriso -as mkisofs \
   -isohybrid-apm-hfsplus \
   "$tmpdir/isofiles/"
 
-# End of file
-
+# END OF FILE
