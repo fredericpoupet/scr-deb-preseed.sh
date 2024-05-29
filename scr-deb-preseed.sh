@@ -178,7 +178,8 @@ set theme=/boot/grub/theme/1
 
 # Menu entry
 menuentry "$grub_entry" {
-    linux    /install.amd/vmlinuz preseed/file=/cdrom/preseed.cfg locale=fr_FR.UTF-8 keymap=fr(latin9) language=fr country=FR autostrue --- quiet
+#   linux    /install.amd/vmlinuz preseed/file=/cdrom/preseed.cfg locale=fr_FR.UTF-8 keymap=fr(latin9) language=fr country=FR autostrue --- quiet
+    linux    /install.amd/vmlinuz preseed/file=/cdrom/preseed.cfg locale=en_US.UTF-8 keymap=us language=us country=FR autostrue --- quiet
     initrd   /install.amd/initrd.gz
 }
 EOF
