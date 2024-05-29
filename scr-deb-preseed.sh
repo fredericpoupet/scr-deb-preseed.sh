@@ -2,10 +2,10 @@
 
 # Variables
 
-date="22/05/2024"
+date="29/05/2024"
 iso_file=""
 tmpdir=".work"
-version="v0.3"
+version="v0.4"
 
 grub_entry="DEB-12.5.0-NET-PRESEED-20240522-01"
 grub_timeout=3
