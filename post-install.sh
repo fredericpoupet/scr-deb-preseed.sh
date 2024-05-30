@@ -1,20 +1,21 @@
 #!/bin/bash
 
+# DEBIAN 12 BOOKWORM - POST-INSTALL.SH
+# VERSION : 0.2 - DATE : 30/05/2024
 
-
-# Add the repository for Visual Studio Code
+# ADD THE REPOSITORY FOR VISUAL STUDIO CODE
 
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
 sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 rm -f packages.microsoft.gpg
 
-# Update packages and install additional software
+# UPDATE PACKAGES AND INSTALL ADDITIONAL SOFTWARE
 
 apt-get update
 apt-get install -y code curl htop lnav sudo wget
 
-# Create a centralized alias file for root
+# CREATE A CENTRALIZED ALIAS FILE FOR ROOT
 
 bash -c 'cat << EOF > /root/.aliases
 #!/bin/bash
@@ -25,13 +26,13 @@ alias r="sudo reboot"
 alias v="sudo vim.tiny"
 EOF'
 
-# Add source aliases to root's .bashrc
+# ADD SOURCE ALIASES TO ROOT'S .BASHRC
 
 if ! grep -q "source /root/.aliases" /root/.bashrc; then
     echo "source /root/.aliases" | tee -a /root/.bashrc
 fi
 
-# Create a centralized alias file for other users
+# CREATE A CENTRALIZED ALIAS FILE FOR OTHER USERS
 
 bash -c 'cat << EOF > /etc/skel/.aliases
 #!/bin/bash
@@ -42,7 +43,7 @@ alias r="sudo reboot"
 alias v="sudo vim.tiny"
 EOF'
 
-# Create a file to load aliases in X11 sessions for root
+# CREATE A FILE TO LOAD ALIASES IN X11 SESSIONS FOR ROOT
 
 bash -c 'cat << EOF > /root/.xsessionrc
 #!/bin/bash
@@ -53,7 +54,7 @@ EOF'
 
 chmod +x /root/.xsessionrc
 
-# Create a file to load aliases in X11 sessions for other users
+# CREATE A FILE TO LOAD ALIASES IN X11 SESSIONS FOR OTHER USERS
 
 bash -c 'cat << EOF > /etc/X11/Xsession.d/90aliases
 #!/bin/bash
@@ -64,7 +65,7 @@ EOF'
 
 chmod +x /etc/X11/Xsession.d/90aliases
 
-# Apply settings to root
+# APPLY SETTINGS TO ROOT
 
 bash -c 'cat << EOF > /root/.xsessionrc
 #!/bin/bash
@@ -77,7 +78,7 @@ EOF'
 
 chmod +x /root/.xsessionrc
 
-# Apply settings to /etc/skel for future users
+# APPLY SETTINGS TO /ETC/SKEL FOR FUTURE USERS
 
 bash -c 'cat << EOF > /etc/skel/.xsessionrc
 #!/bin/bash
@@ -90,7 +91,7 @@ EOF'
 
 chmod +x /etc/skel/.xsessionrc
 
-# Add source aliases to .bashrc for each user
+# ADD SOURCE ALIASES TO .BASHRC FOR EACH USER
 
 add_aliases_to_bashrc() {
     local USER_HOME=$1
@@ -100,7 +101,7 @@ add_aliases_to_bashrc() {
     fi
 }
 
-# Functions to download and setup the scr-apt-up.sh script
+# FUNCTIONS TO DOWNLOAD AND SETUP THE SCR-APT-UP.SH SCRIPT
 
 download_and_setup_apt_up_root() {
     local SCRIPT_URL="https://raw.githubusercontent.com/fredericpoupet/scr-apt-up.sh/main/scr-apt-up.sh"
@@ -152,7 +153,7 @@ download_and_setup_preseed() {
     chown -R $USERNAME:$USERNAME "$PRESEED_DIR"
 }
 
-# Add non-root users to the sudo group and configure sudoers
+# ADD NON-ROOT USERS TO THE SUDO GROUP AND CONFIGURE SUDOERS
 
 configure_sudo() {
     local USERNAME=$1
@@ -161,11 +162,11 @@ configure_sudo() {
     echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/90-$USERNAME-nopasswd"
 }
 
-# Get the list of users with home directories in /home
+# GET THE LIST OF USERS WITH HOME DIRECTORIES IN /HOME
 
 users=$(ls /home)
 
-# Loop through each user and apply all functions
+# LOOP THROUGH EACH USER AND APPLY ALL FUNCTIONS
 
 for user in $users; do
     user_home="/home/$user"
@@ -182,9 +183,9 @@ for user in $users; do
     fi
 done
 
-# Setup for root
+# SETUP FOR ROOT
 
 download_and_setup_apt_up_root
 download_and_setup_preseed_root
 
-# End of file
+# END OF FILE
