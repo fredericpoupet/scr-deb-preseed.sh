@@ -13,11 +13,17 @@ hostname $RANDOM_HOSTNAME
 
 sed -i "s/127.0.1.1.*/127.0.1.1\t$RANDOM_HOSTNAME/g" /etc/hosts
 
-# ADD ANSIBLE USER TO THE SUDO GROUP AND CONFIGURE SUDOERS
+# USERS MANAGEMENT
 
-usermod -aG sudo ansible
+sudo useradd -m -s /bin/bash -G sudo ansible
 
-echo "ansible ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/90-ansible-nopasswd"
+echo "ansible:ansible" | sudo chpasswd
+
+usermod -aG sudo user
+
+echo "user ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/90-user-nopasswd"
+
+echo "ansible ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/91-ansible-nopasswd"
 
 # INSTALL THE OPENSSH SERVER
 
