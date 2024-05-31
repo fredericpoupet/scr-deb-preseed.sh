@@ -25,12 +25,6 @@ echo "user ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/90-user-nopasswd"
 
 echo "ansible ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/91-ansible-nopasswd"
 
-# INSTALL THE OPENSSH SERVER
-
-sudo apt-get update
-
-sudo apt-get install -y openssh-server
-
 # CREATE THE .SSH FOLDER IN THE ANSIBLE USER'S HOME DIRECTORY
 
 mkdir -p /home/ansible/.ssh/
