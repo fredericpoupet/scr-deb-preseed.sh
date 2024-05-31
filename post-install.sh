@@ -43,4 +43,10 @@ chown ansible:ansible /home/ansible/.ssh/authorized_keys
 
 chmod 600 /home/ansible/.ssh/authorized_keys
 
+# SSH CONFIGURATION
+
+sudo sed -i 's/^#   PasswordAuthentication yes/    PasswordAuthentication no/' /etc/ssh/sshd_config
+
+echo "    PermitRootLogin no" | sudo tee -a /etc/ssh/sshd_config
+
 # END OF FILE
