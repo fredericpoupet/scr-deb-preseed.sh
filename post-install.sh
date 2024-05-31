@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # DEBIAN 12 BOOKWORM - POST-INSTALL.SH
-# VERSION : 0.2 - DATE : 30/05/2024
+# VERSION : 0.3 - DATE : 31/05/2024
 
 # SET RANDOM HOSTNAME
 
 RANDOM_HOSTNAME=$(cat /dev/urandom | tr -dc 'a-km-np-z2-9' | fold -w 3 | head -n 1)
 
-echo $RANDOM_HOSTNAME > /etc/hostname
+echo "node-$RANDOM_HOSTNAME > /etc/hostname
 
 hostname $RANDOM_HOSTNAME
 
