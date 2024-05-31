@@ -15,11 +15,13 @@ sed -i "s/127.0.1.1.*/127.0.1.1\t$RANDOM_HOSTNAME/g" /etc/hosts
 
 # USERS MANAGEMENT
 
-sudo useradd -m -s /bin/bash -G sudo ansible
+sudo useradd -m -s /usr/sbin/nologin -G sudo ansible
 
 echo "ansible:ansible" | sudo chpasswd
 
 usermod -aG sudo user
+
+sudo usermod -s /bin/bash ansible
 
 echo "user ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/90-user-nopasswd"
 
