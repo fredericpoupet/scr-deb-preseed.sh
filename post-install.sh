@@ -7,7 +7,7 @@
 
 RANDOM_HOSTNAME=$(cat /dev/urandom | tr -dc 'a-km-np-z2-9' | fold -w 3 | head -n 1)
 
-echo "node-$RANDOM_HOSTNAME > /etc/hostname
+echo "node-$RANDOM_HOSTNAME" > /etc/hostname
 
 hostname $RANDOM_HOSTNAME
 
