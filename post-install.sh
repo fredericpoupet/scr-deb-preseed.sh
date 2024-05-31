@@ -23,9 +23,9 @@ usermod -aG sudo user
 
 sudo usermod -s /bin/bash ansible
 
-echo "user ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/90-user-nopasswd"
+echo "user ALL=(ALL:ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/90-user-nopasswd"
 
-echo "ansible ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/91-ansible-nopasswd"
+echo "ansible ALL=(ALL:ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/91-ansible-nopasswd"
 
 # CREATE THE .SSH FOLDER IN THE ANSIBLE USER'S HOME DIRECTORY
 
