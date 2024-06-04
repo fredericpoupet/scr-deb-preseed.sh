@@ -2,12 +2,12 @@
 
 # VARIABLES
 
-date="29/05/2024"
+date="04/06/2024"
 iso_file=""
 tmpdir=".work"
-version="v0.4"
+version="v0.5"
 
-grub_entry="DEB-12.5.0-NET-PRESEED-20240530-01"
+grub_entry="DEB-12.5.0-NET-PRESEED-20240604-01"
 grub_timeout=3
 
 xorriso_v="DEBIAN_12_5_PRESEED"
@@ -178,7 +178,7 @@ set theme=/boot/grub/theme/1
 # MENU ENTRY
 menuentry "$grub_entry" {
 #   linux    /install.amd/vmlinuz preseed/file=/cdrom/preseed.cfg locale=fr_FR.UTF-8 keymap=fr(latin9) language=fr country=FR autostrue --- quiet
-    linux    /install.amd/vmlinuz preseed/file=/cdrom/preseed.cfg locale=en_US.UTF-8 keymap=us-intl language=en country=FR autostrue --- quiet
+    linux    /install.amd/vmlinuz preseed/file=/cdrom/preseed.cfg locale=en_US.UTF-8 keymap=us language=en country=FR autostrue --- quiet
     initrd   /install.amd/initrd.gz
 }
 EOF
