@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # DEBIAN 12 BOOKWORM - POST-INSTALL.SH
-# VERSION : 0.5 - DATE : 04/06/2024
+# VERSION : 0.6 - DATE : 06/06/2024
 
 # SET RANDOM HOSTNAME
 
@@ -23,9 +23,9 @@ usermod -aG sudo user
 
 sudo usermod -s /bin/bash ansible
 
-echo "user ALL=(ALL:ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/90-user-nopasswd"
+echo "user ALL=(ALL:ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/user-nopasswd"
 
-echo "ansible ALL=(ALL:ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/91-ansible-nopasswd"
+echo "ansible ALL=(ALL:ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/ansible-nopasswd"
 
 # CREATE THE .SSH FOLDER IN THE ANSIBLE USER'S HOME DIRECTORY
 
