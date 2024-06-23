@@ -49,12 +49,20 @@ chmod 600 /home/ansible/.ssh/authorized_keys
 
 #sudo sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
 
-sudo awk '/^#PasswordAuthentication yes/ { print "PasswordAuthentication yes"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
+#sudo awk '/^#PasswordAuthentication yes/ { print "PasswordAuthentication yes"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
 
-sudo awk '/^#PermitRootLogin prohibit-password/ { print "PermitRootLogin prohibit-password"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
+#sudo awk '/^#PermitRootLogin prohibit-password/ { print "PermitRootLogin prohibit-password"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
 
-sudo awk '/^#SyslogFacility AUTH/ { print "SyslogFacility AUTH"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
+#sudo awk '/^#SyslogFacility AUTH/ { print "SyslogFacility AUTH"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
 
-sudo awk '/^#LogLevel INFO/ { print "#LogLevel INFO"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
+#sudo awk '/^#LogLevel INFO/ { print "#LogLevel INFO"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
+
+sudo awk '
+    /^#PasswordAuthentication yes/ { print "PasswordAuthentication no"; next }
+    /^#PermitRootLogin prohibit-password/ { print "PermitRootLogin prohibit-password"; next }
+    /^#SyslogFacility AUTH/ { print "SyslogFacility AUTH"; next }
+    /^#LogLevel INFO/ { print "LogLevel INFO"; next }
+    { print }
+' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
 
 # END OF FILE
