@@ -50,6 +50,8 @@ sudo awk '
     /^#PermitRootLogin prohibit-password/ { print "PermitRootLogin prohibit-password"; next }
     /^#SyslogFacility AUTH/ { print "SyslogFacility AUTH"; next }
     /^#LogLevel INFO/ { print "LogLevel INFO"; next }
+    /^#?ClientAliveInterval/ { print "ClientAliveInterval 300"; next }
+    /^#?ClientAliveCountMax/ { print "ClientAliveCountMax 3"; next }
     { print }
 ' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
 
