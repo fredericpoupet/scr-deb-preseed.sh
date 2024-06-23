@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # DEBIAN 12 BOOKWORM - POST-INSTALL.SH
-# VERSION : 0.6 - DATE : 06/06/2024
+# VERSION : 0.7 - DATE : 23/06/2024
 
 # SET RANDOM HOSTNAME
 
@@ -45,8 +45,16 @@ chmod 600 /home/ansible/.ssh/authorized_keys
 
 # SSH CONFIGURATION
 
-sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+#sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
 
-sudo sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
+#sudo sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
+
+sudo awk '/^#PasswordAuthentication yes/ { print "PasswordAuthentication yes"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
+
+sudo awk '/^#PermitRootLogin prohibit-password/ { print "PermitRootLogin prohibit-password"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
+
+sudo awk '/^#SyslogFacility AUTH/ { print "SyslogFacility AUTH"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
+
+sudo awk '/^#LogLevel INFO/ { print "#LogLevel INFO"; next } { print }' /etc/ssh/sshd_config > /tmp/sshd_config && sudo mv /tmp/sshd_config /etc/ssh/sshd_config
 
 # END OF FILE
