@@ -45,6 +45,8 @@ chmod 600 /home/ansible/.ssh/authorized_keys
 
 # SSH CONFIGURATION
 
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+
 sudo awk '
     /^#PasswordAuthentication yes/ { print "PasswordAuthentication no"; next }
     /^#PermitRootLogin prohibit-password/ { print "PermitRootLogin prohibit-password"; next }
