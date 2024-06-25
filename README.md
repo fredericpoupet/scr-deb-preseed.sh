@@ -35,56 +35,30 @@ The last three files can be downloaded from the official Debian website: https:/
 The main settings made during installation are as follows:
 
 - Hostname: "unassigned-hostname"
-- Language: US with FR keyboard
+- Language: US with US keyboard
 - NTP: Enabled with Paris as time zone
-- Packages: Standard installation with Cinnamon
+- Packages: Standard installation +/- Cinnamon, according to the "preseed.cfg" file uses
 - Partitioning : Atomic (everything in a single partition)
 - Root account: Enabled (Password: "root")
 - User account: "user" (Password: "user")
 
 ## Customization
 
-The post-install.sh script will make the following modifications.
+The "post-install.sh" script will make the following modifications.
 
-### Software
+### Hostname
 
-The following software packages are installed:
+- "unassigned-hostname" replaced by a randomly generated name in the form "node-XXX" or "XXX" are hexadecimal characters.
 
-- curl (https://curl.se)
-- htop (https://htop.dev)
-- lnav (https://lnav.org)
-- sudo (https://www.sudo.ws)
-- VS Code (https://code.visualstudio.com)
-- wget (https://www.gnu.org/software/wget)
+### SSH
 
-### Aliases
+- The "sshd_config" file is configured with the desired values
+- Clients' public SSH keys are added to the authorized_keys file of the "ansible" user.
 
-The following aliases are created for root and listed users:
+### Users
 
-- alias c="clear"
-- alias ll="ls -lisah"
-- alias p="sudo poweroff"
-- alias r="sudo reboot"
-- alias v="sudo vim.tiny"
-
-### Graphic environment
-
-The post-install.sh script will make the following modifications to the root session and those of listed users:
-
-- The "Adwaita-dark" dark theme is applied
-- The "Oblivion" color scheme is applied to GEdit
-- A maximized terminal window is automatically executed on login
-
-### Scripts
-
-The following scripts are downloaded and made executable for root and listed users:
-
-- https://raw.githubusercontent.com/fredericpoupet/scr-apt-up.sh/main/scr-apt-up.sh
-- https://raw.githubusercontent.com/fredericpoupet/scr-deb-preseed.sh/main
-
-### Sudoers
-
-Listed users are added to sudoers.
+- User account: "ansible" (Password: "ansible")
+- Users "user" and "ansible" are added to sudoers.
 
 ## Example of result
 
