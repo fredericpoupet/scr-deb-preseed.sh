@@ -13,7 +13,7 @@ hostname $HOSTNAME
 
 echo "$HOSTNAME" > /etc/hostname
 
-sed -i "s/127.0.1.1*/127.0.1.1\t$HOSTNAME/g" /etc/hosts
+sed -i "s/^127.0.1.1[ \t].*/127.0.1.1\t$HOSTNAME/" /etc/hosts
 
 # USERS MANAGEMENT
 
