@@ -5,13 +5,15 @@
 
 # SET RANDOM HOSTNAME
 
-RANDOM_HOSTNAME=$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 3 | head -n 1)
+RANDOM_NAME=$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 3 | head -n 1)
 
-echo "node-$RANDOM_HOSTNAME" > /etc/hostname
+HOSTNAME="node-$RANDOM_NAME"
 
-hostname $RANDOM_HOSTNAME
+echo "$HOSTNAME" > /etc/hostname
 
-sed -i "s/127.0.0.1.*/127.0.0.1\tnode-$RANDOM_HOSTNAME/g" /etc/hosts
+hostname $HOSTNAME
+
+sed -i "s/127.0.0.1*/127.0.0.1\t$HOSTNAME/g" /etc/hosts
 
 # USERS MANAGEMENT
 
