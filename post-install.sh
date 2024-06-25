@@ -9,11 +9,11 @@ RANDOM_NAME=$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 3 | head -n 1)
 
 HOSTNAME="node-$RANDOM_NAME"
 
-echo "$HOSTNAME" > /etc/hostname
-
 hostname $HOSTNAME
 
-sed -i "s/127.0.0.1*/127.0.0.1\t$HOSTNAME/g" /etc/hosts
+echo "$HOSTNAME" > /etc/hostname
+
+sed -i "s/127.0.1.1*/127.0.1.1\t$HOSTNAME/g" /etc/hosts
 
 # USERS MANAGEMENT
 
