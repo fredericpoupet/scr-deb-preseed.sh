@@ -11,7 +11,7 @@ echo "node-$RANDOM_HOSTNAME" > /etc/hostname
 
 hostname $RANDOM_HOSTNAME
 
-sed -i "s/127.0.1.1.*/127.0.1.1\t$RANDOM_HOSTNAME/g" /etc/hosts
+sed -i "s/127.0.0.1.*/127.0.0.1\tnode-$RANDOM_HOSTNAME/g" /etc/hosts
 
 # USERS MANAGEMENT
 
