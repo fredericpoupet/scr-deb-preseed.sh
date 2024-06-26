@@ -5,9 +5,11 @@
 
 # SET RANDOM HOSTNAME
 
-RANDOM_NAME=$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 3 | head -n 1)
+# RANDOM_NAME=$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 3 | head -n 1)
 
-HOSTNAME="node-$RANDOM_NAME"
+# HOSTNAME="node-$RANDOM_NAME"
+
+HOSTNAME="node-$(head /dev/urandom | tr -dc 'a-f0-9' | head -c 3)"
 
 hostname $HOSTNAME
 
