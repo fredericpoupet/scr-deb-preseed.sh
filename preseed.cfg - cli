@@ -1,9 +1,9 @@
 # DEBIAN 12 BOOKWORM - PRESEED.CFG
-# VERSION : 0.1 - DATE : 25/06/2024
+# VERSION : 0.2 - DATE : 26/06/2024
 
 # DOMAIN
 
-d-i netcfg/get_domain string unassigned-domain
+d-i netcfg/get_domain string fsk.lan
 
 # GRUB
 
