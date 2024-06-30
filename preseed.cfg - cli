@@ -1,5 +1,5 @@
 # DEBIAN 12 BOOKWORM - PRESEED.CFG
-# VERSION : 0.2 - DATE : 26/06/2024
+# VERSION : 0.3 - DATE : 30/06/2024
 
 # DOMAIN
 
@@ -87,10 +87,10 @@ d-i passwd/root-login boolean false
 
 # USER : USER
 
-d-i passwd/user-fullname string "user"
-d-i passwd/username string user
-d-i passwd/user-password password user
-d-i passwd/user-password-again password user
+d-i passwd/user-fullname string "core"
+d-i passwd/username string core
+d-i passwd/user-password password core
+d-i passwd/user-password-again password core
 
 d-i user-setup/allow-password-weak boolean true
 
